@@ -33,4 +33,6 @@ start = time.time()
 preds = model(input_tensor)
 print(time.time() -start)
 faces3d = tools.preds_to_shape(preds[0].detach().cpu().numpy())
+for i in range(len(faces3d)):
+    print(faces3d[i].shape)
 tools.write_ply(os.path.join(options.save_dir, 'shape.ply'), faces3d[0], faces3d[1])
